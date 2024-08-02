@@ -1,0 +1,4 @@
+- daisy ui
+- fonts - poppins- fredeko
+- react-slick - library for slider(course.json)
+- react-hook-form - 
