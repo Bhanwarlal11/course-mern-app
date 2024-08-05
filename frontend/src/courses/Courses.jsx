@@ -5,7 +5,6 @@ import CoursePaid from "../components/CoursePaid";
 import list from '../../public/list.json'
 
 const Courses = () => {
-    console.log(list);
   return (
     <>
       <Navbar></Navbar>

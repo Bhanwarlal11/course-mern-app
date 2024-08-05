@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Login from "./Login";
+import { useAuth } from "../context/AuthProvider";
+import Logout from "./Logout";
 
 const Navbar = () => {
+  const [authUser, setAuthUser] = useAuth();
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -88,7 +92,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">Store</a>
         </div>
         <div className="navbar-end">
           <div className="navbar-center hidden lg:flex">
@@ -149,14 +153,22 @@ const Navbar = () => {
             </label>
           </div>
 
-          <div className="navbar-end">
-            <a className="bg-black text-white p-2 cursor-pointer rounded-md hover:bg-slate-500 duration-300
-            o "
-            onClick={()=> document.getElementById("my_modal_3").showModal()}>
-              Login
-            </a>
-            <Login />
-          </div>
+          {authUser ? (
+            <Logout></Logout>
+          ) : (
+            <div className="navbar-end">
+              <a
+                className="bg-black text-white p-2 cursor-pointer rounded-md hover:bg-slate-500 duration-300
+          o "
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
+                Login
+              </a>
+              <Login />
+            </div>
+          )}
         </div>
       </div>
     </div>
